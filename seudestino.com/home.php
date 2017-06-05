@@ -10,6 +10,10 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	    <link rel="stylesheet" href="./material.min.css">
+		<script src="./material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	    
 	    <title>seudestino.com</title>
 	    
@@ -138,7 +142,6 @@
 				            </div>
 				          </div>
 				        </div>
-                        
                     </form>
                 </div>
             </div>

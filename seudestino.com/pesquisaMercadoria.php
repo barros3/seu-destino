@@ -12,31 +12,41 @@
     <title>teste-do-mercado</title>
 
     <?php
-      require_once 'connection.php';
-    
-       $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
-      # LISTA MERCADORIA
-      $result = "SELECT * FROM test.mercadoria" or die("Nao consegui realizar a consulta!!!");
-      $listMercadoria = mysql_query($result);
+          include 'connection.php';
+          // Informações da query
+          $campos_query = "*";
+          $final_query  = "FROM destino";
 
-      //conta o total de itens
-        $total = mysql_num_rows($listMercadoria);
-   
-    //seta a quantidade de itens por página, neste caso, 2 itens
-        $registros = 10;
-   
-    //calcula o número de páginas arredondando o resultado para cima
-        $numPaginas = ceil($total/$registros);
-   
-    //variavel para calcular o início da visualização com base na página atual
-        $inicio = ($registros*$pagina)-$registros;
- 
-    //seleciona os itens por página
-        $result = "select * from test.mercadoria limit $inicio,$registros";
-        $listMercadoria = mysql_query($result);
-        $total = mysql_num_rows($listMercadoria);
+          // Maximo de registros por pagina
+          $maximo = 6;
 
-    ?>
+          // Declaração da pagina inicial
+          $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] :1;
+          // if($pagina == "") {
+          //     $pagina = "1";
+          // }
+
+          // Calculando o registro inicial
+          $inicio = $pagina - 1;
+          $inicio = $maximo * $inicio;
+
+          // Conta os resultados no total da query
+          $strCount = "SELECT COUNT(*) AS 'num_resgistro' $final_query";
+          $query = mysqli_query($conexao, $strCount);
+          $row = mysqli_fetch_array($query);
+          $total = $row["num_resgistro"];
+
+          ###################################################################################
+          // INICIO DO CONTEÚDO
+
+          // Realizamos a query
+          $sql = mysqli_query($conexao, "SELECT $campos_query $final_query LIMIT ".$inicio.", ".$maximo."");
+          
+          // var_dump($listarDestino);
+          // FIM DO CONTEUDO
+          ###################################################################################
+
+      ?>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -88,56 +98,86 @@
         <!-- /.container -->
     </nav>
     <div class="container">
+          <?php
+              $menos = $pagina - 1;
+              $mais = $pagina + 1;
+
+              $pgs = ceil($total / $maximo);
+
+              if($pgs > 1 ) {
+
+                echo "<br />";
+
+                  // Mostragem de pagina
+                  if($menos > 0) {
+                  echo "<a id='ant' href=".$_SERVER['PHP_SELF']."?pagina=$menos>anterior</a>&nbsp; ";
+                  }
+
+                  // Listando as paginas
+                for($i=1;$i <= $pgs;$i++) {
+                  if($i != $pagina) {
+                    echo " <a id='prox' href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a> | ";
+                  } else {
+                    echo " <strong>".$i."</strong> | ";
+                  }
+                }
+
+                if($mais <= $pgs) {
+                  echo " <a href=".$_SERVER['PHP_SELF']."?pagina=$mais>próxima</a>";
+                }
+              }
+            ?>
         <div class="row">
             <div class="col-md-12">
               <h1 class="page-header">Lista de Mercadoria</h1>
               <table class="table table-striped table-hover">
                 <thead class="">
                   <tr class="table-info" style="font-style: oblique; font-size: large;">
-                    <th>Cod </th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Quantidade</th>
-                    <th>Preco</th>
-                    <th>Tipo de Negociacao</th>
+                    <th>Id</th>
+                     <th>Destino</th>
+                    <th>Data de Entrada</th>
+                    <th>Data de Saída</th>
+                    <th>Diárias</th>
+                    <th>Tipo de Transporte</th>
+                    <th>Hospedagem</th>
+                    <th>Translado</th>
+                    <th>Custo</th>
                     <!--<th>Editar</th>-->
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                    while ($l = mysql_fetch_array($listMercadoria)) {
+                 <?php
+                  include 'connection.php';
+                  include 'paginacao.php';
 
-                      $tipo_mercadoria = $l["tipo_mercadoria"];
-                      $cod_mercadoria = $l["cod_mercadoria"];
-                      $nome = $l["nome"];
-                      $quantidade = $l["quantidade"];
-                      $preco = $l["preco"];
-                      $tipo_negocio = $l["tipo_negocio"];
+                    while ($l = mysqli_fetch_array($sql)) {
+
+                      $id = $l["id"];
+                      $destino = $l["destino"];
+                      $data_entrada = $l["data_entrada"];
+                      $data_saida = $l["data_saida"];
+                      $diarias = $l["diarias"];
+                      $tipoTransporte = $l["tipoTransporte"];
+                      $translado = $l["translado"];
+                      $hospedagem = $l["hospedagem"];
+                      $custo = $l["custo"];
 
                       echo 
-
                         "<tr>
-                          <td>&nbsp;$tipo_mercadoria</td>
-                          <td>&nbsp;$cod_mercadoria</td>
-                          <td>&nbsp;$nome</td>
-                          <td>&nbsp;$quantidade</td>
-                          <td>&nbsp;R$ $preco</td>
-                          <td>&nbsp;$tipo_negocio</td>
+                          <td>&nbsp;$id</td>
+                          <td>&nbsp;$destino</td>
+                          <td>$data_entrada</td>
+                          <td>&nbsp;$data_saida</td>
+                          <td>&nbsp;$diarias</td>
+                          <td>&nbsp;$tipoTransporte</td>
+                          <td>&nbsp;$hospedagem</td>
+                          <td>&nbsp;$translado</td>
+                          <td>&nbsp;$custo</td>
                         </tr>\n";
                     }
                     
                   ?>
                 </tbody>
-                <?php 
-                  for($i = 1; $i < $numPaginas + 1; $i++) {
-                       echo "
-                            <ul class='pagination'>
-                              <li><a href='pesquisaMercadoria.php?pagina=$i'>".$i."</a></li>
-                            </ul>
-                              ";
-                    }
-                 ?>
-
               </table>
             </div>
           </div>

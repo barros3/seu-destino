@@ -7,8 +7,14 @@ html {
 }
 
 body {
-  background: #c1bdba;
-  font-family: 'Titillium Web', sans-serif;
+  background-image: url('../../images/viagem.jpg'); 
+  background-repeat: no-repeat;
+  /*-webkit-background-size: 100% 100% !important;
+  -moz-background-size: 100% 100% !important;
+  -o-background-size: 100% 100% !important;
+  background-size: 100% 100% !important;*/
+  /*background-origin: content-box;;*/
+    /*background-position: center center;*/
 }
 
 a {

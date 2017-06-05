@@ -1,31 +1,3 @@
-<?php
-   include 'connection.php';
-
-   session_start();
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {   // verifica se o metodo foi acionado
-      
-      $nome = mysqli_real_escape_string($conexao, $_POST['login']);     // pega login
-      $senha = mysqli_real_escape_string($conexao, $_POST['senha']);    //pega senha
-      
-      $sql = "SELECT id FROM usuario WHERE login = '$nome' and senha = '$senha'";  // consulta no banco
-      
-      $result = mysqli_query($conexao, $sql);   //  passa conecao do connection.php
-      $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
-      
-      $active = $row['nome'];
-      
-      $count = mysqli_num_rows($result);
-      
-        
-      if($count == 1) {
-         $_SESSION['login'] = $nome;
-         header("location: home.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-   }
-?>
 <html>
    
    <head>
@@ -36,69 +8,25 @@
        <link rel="stylesheet" href="sign-up-login-form/css/style.css">
       
    </head>
-   <body style="background-image: url('images/viagem.jpg');   -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  background-size: 100% 100%;"">
+   <body>
         <div class="form">
           
           <ul class="tab-group">
-            <li class="tab active"><a href="#signup">Sua área</a></li>
+            <li class="tab active"><a href="#signup">Login</a></li>
             <li class="tab"><a href="#login">Cadastrar</a></li>
           </ul>
           
           <div class="tab-content">
             <div id="signup">   
-              <h1>Cadastra-se</h1>
+              <h1>Bem vindo !</h1>
               
-              <form action="/" method="post">
-              
-              <div class="top-row">
-                <div class="field-wrap">
-                  <label>
-                    First Name<span class="req">*</span>
-                  </label>
-                  <input type="text" required autocomplete="off" />
-                </div>
-            
-                <div class="field-wrap">
-                  <label>
-                    Last Name<span class="req">*</span>
-                  </label>
-                  <input type="text"required autocomplete="off"/>
-                </div>
-              </div>
-
-              <div class="field-wrap">
-                <label>
-                  Email Address<span class="req">*</span>
-                </label>
-                <input type="email"required autocomplete="off"/>
-              </div>
-              
-              <div class="field-wrap">
-                <label>
-                  Set A Password<span class="req">*</span>
-                </label>
-                <input type="password"required autocomplete="off"/>
-              </div>
-              
-              <button type="submit" class="button button-block"/>Cadastrar</button>
-              
-              </form>
-
-            </div>
-            
-            <div id="login">   
-              <h1>Bem vindo!</h1>
-              
-              <form action="/" method="post">
+              <form action="fazerLogin.php" method="post">
               
                 <div class="field-wrap">
                 <label>
                   Login<span class="req">*</span>
                 </label>
-                <input type="email"required name="login" autocomplete="off"/>
+                <input type="text"required name="login" autocomplete="off" autofocus/>
               </div>
               
               <div class="field-wrap">
@@ -116,10 +44,102 @@
 
             </div>
             
+            <div id="login">   
+              <h1>Olá, Cadastre-se já!</h1>
+
+              <form action="salvarUsuario.php" enctype="multipart/form-data" method="POST" >
+
+              <div class="field-wrap">
+               
+                <input type="file" name="foto" required autocomplete="off"/>
+              </div>
+              
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    Nome<span class="req">*</span>
+                  </label>
+                  <input type="text" name="nome" required autocomplete="off" autofocus />
+                  <script>
+                    if (!("autofocus" in document.createElement("input"))) {
+                      document.getElementById("q").focus();
+                    }
+                  </script>
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    Sobrenome<span class="req">*</span>
+                  </label>
+                  <input type="text" name="sobrenome" required autocomplete="off"/>
+                </div>
+              </div>
+              <div class="top-row">
+                  <div class="field-wrap">
+                    <label>
+                      CPF<span class="req">*</span>
+                    </label>
+                    <input type="number" name="cpf" required autocomplete="off" style="" />
+                  </div>
+
+                  <div class="field-wrap">
+                    <label>
+                      Data de Nascimento<span class="req">*</span>
+                    </label>
+                    <input type="date"required autocomplete="off"/>
+                  </div>
+              </div>    
+              
+              <div class="field-wrap">
+                <label>
+                  Endereço<span class="req">*</span>
+                </label>
+                <input type="text" name="enderecos" required autocomplete="off"/>
+              </div>
+
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    Telefone<span class="req">*</span>
+                  </label>
+                  <input type="text" name="telefone" required autocomplete="off" />
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    RG<span class="req">*</span>
+                  </label>
+                  <input type="text" name="rg" required autocomplete="off"/>
+                </div>
+              </div>
+
+               <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    Login<span class="req">*</span>
+                  </label>
+                  <input type="text" name="login" required autocomplete="off" />
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    Senha<span class="req">*</span>
+                  </label>
+                  <input type="text" name="senha" required autocomplete="off"/>
+                </div>
+
+              </div>
+              
+              <button type="submit" class="button button-block"/>Cadastrar</button>
+              
+              </form>
+
+            </div>
+            
           </div><!-- tab-content -->
           
     </div> <!-- /form -->
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+       <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
         <script src="sign-up-login-form/js/index.js"></script>
     </body>
