@@ -52,7 +52,7 @@
           $final_query  = "FROM destino";
 
           // Maximo de registros por pagina
-          $maximo = 5;
+          $maximo = 6;
 
           // Declaração da pagina inicial
           $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] :1;
@@ -402,7 +402,7 @@
                         </div>
                         <div class="form-group"> 
                             <div class="col-md-4">
-                                <input id="custo" name="custo" type="text" placeholder="Custo" class="cadastrar" disabled>
+                                <input id="custo" name="custo" type="text" placeholder="Custo" class="cadastrar" readonly>
                             </div>
                             <div class="col-md-4">
                                 <input id="diaria" name="diaria" type="number" placeholder="Diárias" class="cadastrar">
