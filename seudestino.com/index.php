@@ -287,7 +287,7 @@
               </div>
              
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="margin: 5% 0% 0% 0%;">
                         <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--6dp" style="width: 100% !important;">
                             <thead class="">
                               <tr class="table-info" style="font-style: oblique; font-size: large;">
