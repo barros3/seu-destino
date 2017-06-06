@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 04/06/2017 às 14:50
+-- Tempo de geração: ********
 -- Versão do servidor: 10.1.21-MariaDB
 -- Versão do PHP: 7.1.1
 
@@ -43,42 +43,8 @@ CREATE TABLE `destino` (
 --
 
 INSERT INTO `destino` (`id`, `destino`, `diarias`, `data_entrada`, `data_saida`, `tipoTransporte`, `translado`, `hospedagem`, `custo`) VALUES
-(2, 'HAVAI', 0, '2017-06-12', '2018-06-24', 'NAVE', 'o', '6 Estrelas', '123,00'),
-(3, 'Paris', 0, '1999-02-12', '0012-12-23', 'NAVIO', '', '3 Estrelas', '131231'),
-(4, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', '123'),
-(5, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(6, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(7, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(8, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(9, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(10, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(11, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(12, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(13, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(14, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(15, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(16, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(17, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(18, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(19, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(20, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(21, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', ''),
-(22, 'HAVAI', 0, '2000-12-12', '2000-12-12', 'AVIAO', 'o', '1 Estrela', '');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `foto_perfil`
---
-
-CREATE TABLE `foto_perfil` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(60) NOT NULL,
-  `conteudo` mediumblob NOT NULL,
-  `tipo` varchar(20) NOT NULL,
-  `tamanho` int(10) UNSIGNED NOT NULL,
-  `usuario_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(1, 'HAVAI', 0, '2017-06-12', '2018-06-24', 'NAVE', 'o', '5 Estrelas', '100'),
+(2, 'PARIS', 0, '2017-02-12', '2018-12-23', 'NAVIO', 'o', '3 Estrelas', '100');
 
 -- --------------------------------------------------------
 
@@ -105,8 +71,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `foto`, `nome`, `sobrenome`, `data_nascimento`, `endereco`, `telefone`, `rg`, `cpf`, `login`, `senha`) VALUES
-(46, 'opt/lampp/htdocs/teste-de-mercado/images/66bedf80ea969615c6943e888ddb3dd0.jpg', 'Plutao', 'Barros', '0000-00-00', 'rua', '083987735701', 0, 2147483647, 'mercurio', 'asd'),
-(47, 'opt/lampp/htdocs/teste-de-mercado/images/db3a9a34cb830d06bf5cdd370be65659.jpg', '12312', '143bsdvhjmb', '1231-03-12', ',LQWKM', '12341232987', 0, 0, 'kjhbasd', 'jaskdnb');
+(50, 'images/9d30007408aa70e65030d7d50d720c44.jpg', 'Luciano', 'Barros', '1989-08-24', 'Rua C. Severino', '083987735701', 123123, 2147483647, 'admin', '123');
 
 --
 -- Índices de tabelas apagadas
@@ -117,13 +82,6 @@ INSERT INTO `usuario` (`id`, `foto`, `nome`, `sobrenome`, `data_nascimento`, `en
 --
 ALTER TABLE `destino`
   ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `foto_perfil`
---
-ALTER TABLE `foto_perfil`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Índices de tabela `usuario`
@@ -139,27 +97,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `destino`
 --
 ALTER TABLE `destino`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT de tabela `foto_perfil`
---
-ALTER TABLE `foto_perfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
---
--- Restrições para dumps de tabelas
---
-
---
--- Restrições para tabelas `foto_perfil`
---
-ALTER TABLE `foto_perfil`
-  ADD CONSTRAINT `foto_perfil_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
