@@ -21,19 +21,19 @@
 		if($conexao){
 			mysqli_close($conexao);
 		}
-		
 
 		if (count($error) != 0) {
 			foreach ($error as $erro) {
 				echo $erro . "<br />";
 			}
 		}	
+
 	}catch(Exception $e){
 
 	    echo $e->getMessage();
 
 	}
 
-	return header("Location:cadastraDestino.php");
+	return header("Location:index.php");
 
 ?>
