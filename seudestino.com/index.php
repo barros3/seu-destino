@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="stylesheet" href="sign-up-login-form/css/style.css">
@@ -21,7 +22,6 @@
         <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -52,7 +52,7 @@
           $final_query  = "FROM destino";
 
           // Maximo de registros por pagina
-          $maximo = 6;
+          $maximo = 5;
 
           // Declaração da pagina inicial
           $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] :1;
@@ -90,9 +90,11 @@
 
 </head>
 
-<body style="">
+<body>
+    <!-- Page Content -->
+    <div class="container">
 
-    <!-- Navigation -->
+     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -136,16 +138,14 @@
         <!-- /.container -->
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
-
         <!-- Jumbotron Header -->
         <header>
-            <div class="col-sm-6" style="margin: 5% 0% 5% 0%;">
-              <h3 style="margin: 5% 0% 0% 50%; padding: initial;">Bem vindo, <?php echo $login_session ?></h3> 
+            <div class="col-sm-6" style="margin: 5% 0% 5% 0%">
                 <?php 
-                    echo "<img style='width: 42%;height: 62%;' src='/".$foto."' alt='Foto do Perfil' /><br />
-                    <div>
+                    echo "<img style=' width: 200px; height: 200px; border-radius: 100%' src='".$foto."' alt='Foto do Perfil' /><br /> 
+            <div style='margin: -35% -3% -13% 0%; width: 100%; float: right;'>
+                     <h3 style='padding: 0% 0% 0% 0%; float: right; margin-right: 110px;'>Bem vindo, ".$login_session."</h3> 
+                       <div style='margin: 0px 30px 0px 0px;'>
                         <p style='margin: 0% 14% 0% 50%'><strong>Sobrenome :</strong> ".$sobrenome." </p>
                         <p style='margin: 0% 14% 0% 50%'><strong>Nascimento :</strong> ".$data_nascimento." </p>
                         <p style='margin: 0% 14% 0% 50%'><strong>Endereco :</strong> ".$endereco." </p>
@@ -154,6 +154,7 @@
                         <p style='margin: 0% 14% 0% 50%'><strong>CPF :</strong> ".$cpf." </p>
                         <p style='margin: 0% 14% 0% 50%'><strong>Login :</strong> ".$login." </p>
                         <p style='margin: 0% 14% 0% 50%'><strong>Senha Atual :</strong> ".$senha." </p>
+                        </div>
                     </div>
                         ";
                 ?>
@@ -176,7 +177,7 @@
 
         <!-- Title -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="margin-bottom: 3%;">
                 <h3>Destinos sugeridos</h3>
             </div>
         </div>
@@ -186,52 +187,56 @@
         <div class="row text-center">
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
+                <div class="thumbnail zoom-ps">
+                    <img class="img-card" src="images/siri.jpg" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Siri lanka</h3>
+                        <p>Uma parte de nós pensa em férias tranquila nesta praia.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Adicionar</a> 
+                            <a href="https://srilankafoundation.org/newsfeed/sri-lanka-a-hidden-outsourcing-gem/" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
+                <div class="thumbnail zoom-ps">
+                    <img class="img-card" src="images/brasil1.JPG" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Brasil</h3>
+                        <p>Descansar depois um bom mergulho no Jalapão - TO</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Adicionar</a> 
+                            <a href="http://ourique-jalapao.com.br/?p=1959" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
+                <div class="thumbnail zoom-ps">
+                    <img class="img-card" src="images/slovenia.jpg" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Slovenia</h3>
+                        <p>Férias na Slovenia com passeios durante a tarde fria.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Adicionar</a> 
+                            <a href="https://www.slovenia.info/en/places-to-go/regions/alpine-slovenia" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
+                <div class="thumbnail zoom-ps">
+                    <img class="img-card" src="images/brasil2.jpg" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Brasil</h3>
+                        <p>Em Brasília nem tudo é corrupto.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                            <a href="http://www.inforbrasilia.com.br/2016/06/" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
                 </div>
@@ -243,183 +248,176 @@
         <!-- -dialogs -->
 
         <dialog class="mdl-dialog" id="mdl-dialog-meus-destinos" style="background: rgba(19, 35, 47, 0.9);
-    width: 78% !important;
-    height: 58% !important;
-    padding: 0% 5% 0% 5% !important;
-    width: 85% !important;
-    height: 85% !important;">
+    width: 78% !important; height: 58% !important; padding: 0% 5% 0% 5% !important; width: 85% !important; height: 85% !important;">
             <form id="form" method="post" enctype="multipart/form-data" method="POST" action="salvarUsuario.php">
               <div class="page-header">
-                <h1 style="text-align: left">Meus Destinos</h1>  
-                <h3 style="text-align: left">Total investido: <?php echo "R$ " . $row['valor_soma'] ?></h3>  
+                <h1 style="text-align: left; color: #ffffff; font-weight: 300;">Meus Destinos</h1>  
+                <h3 style="text-align: left; color: #ffffff;">Total investido: <?php echo "R$ " . $row['valor_soma'] ?></h3>  
+                <div style="margin: -6% 0% 1% 92%; padding: 0% 0% 0% 0%; width: 9%;">
+                 <?php
+                      $menos = $pagina - 1;
+                      $mais = $pagina  +1;
+
+                      $pgs = ceil($total / $maximo);
+
+                      if($pgs > 1 ) {
+
+                        echo "<br />";
+
+                          // Mostragem de pagina
+                          if($menos > 0) {
+                          echo "<a href=".$_SERVER['PHP_SELF']."?pagina=$menos>anterior</a>&nbsp; ";
+                          }
+
+                          // Listando as paginas
+                        for($i=1;$i <= $pgs;$i++) {
+                          if($i != $pagina) {
+                            echo " <a href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a> | ";
+                          } else {
+                            echo " <strong>".$i."</strong> | ";
+                          }
+                        }
+
+                        if($mais <= $pgs) {
+                          echo " <a href=".$_SERVER['PHP_SELF']."?pagina=$mais>próxima</a>";
+                        }
+                      }
+                    ?>
+                 </div>
               </div>
-              <?php
-              $menos = $pagina - 1;
-              $mais = $pagina + 1;
-
-              $pgs = ceil($total / $maximo);
-
-              if($pgs > 1 ) {
-
-                echo "<br />";
-
-                  // Mostragem de pagina
-                  if($menos > 0) {
-                  echo "<a href=".$_SERVER['PHP_SELF']."?pagina=$menos>anterior</a>&nbsp; ";
-                  }
-
-                  // Listando as paginas
-                for($i=1;$i <= $pgs;$i++) {
-                  if($i != $pagina) {
-                    echo " <a href=".$_SERVER['PHP_SELF']."?pagina=".($i).">$i</a> | ";
-                  } else {
-                    echo " <strong>".$i."</strong> | ";
-                  }
-                }
-
-                if($mais <= $pgs) {
-                  echo " <a href=".$_SERVER['PHP_SELF']."?pagina=$mais>próxima</a>";
-                }
-              }
-            ?> 
-              <table class="table table-striped table-hover">
+             
                 <div class="row">
                     <div class="col-md-12">
-                      <table class="table table-striped table-hover">
-                        <thead class="">
-                          <tr class="table-info" style="font-style: oblique; font-size: large;">
-                            <th>Id</th>
-                             <th>Destino</th>
-                            <th>Data de Entrada</th>
-                            <th>Data de Saída</th>
-                            <th>Diárias</th>
-                            <th>Tipo de Transporte</th>
-                            <th>Hospedagem</th>
-                            <th>Translado</th>
-                            <th>Custo</th>
-                            <!--<th>Editar</th>-->
-                          </tr>
-                        </thead>
-                        <tbody>
-                         <?php
-                          include 'connection.php';
-                          include 'paginacao.php';
+                        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--6dp" style="width: 100% !important;">
+                            <thead class="">
+                              <tr class="table-info" style="font-style: oblique; font-size: large;">
+                                <th class="mdl-data-table__cell--non-numeric">Id</th>
+                                <th class="mdl-data-table__cell--non-numeric">Destino</th>
+                                <th class="mdl-data-table__cell--non-numeric">Data de Entrada</th>
+                                <th class="mdl-data-table__cell--non-numeric">Data de Saída</th>
+                                <th class="mdl-data-table__cell--non-numeric">Diárias</th>
+                                <th class="mdl-data-table__cell--non-numeric">Tipo de Transporte</th>
+                                <th class="mdl-data-table__cell--non-numeric">Hospedagem</th>
+                                <th class="mdl-data-table__cell--non-numeric">Translado</th>
+                                <th class="mdl-data-table__cell--non-numeric">Custo</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                             <?php
+                              include 'connection.php';
+                              include 'paginacao.php';
 
-                            while ($l = mysqli_fetch_array($sql)) {
+                                while ($l = mysqli_fetch_array($sql)) {
 
-                              $id = $l["id"];
-                              $destino = $l["destino"];
-                              $data_entrada = $l["data_entrada"];
-                              $data_saida = $l["data_saida"];
-                              $diarias = $l["diarias"];
-                              $tipoTransporte = $l["tipoTransporte"];
-                              $translado = $l["translado"];
-                              $hospedagem = $l["hospedagem"];
-                              $custo = $l["custo"];
+                                  $id = $l["id"];
+                                  $destino = $l["destino"];
+                                  $data_entrada = $l["data_entrada"];
+                                  $data_saida = $l["data_saida"];
+                                  $diarias = $l["diarias"];
+                                  $tipoTransporte = $l["tipoTransporte"];
+                                  $translado = $l["translado"];
+                                  $hospedagem = $l["hospedagem"];
+                                  $custo = $l["custo"];
 
-                              echo 
-                                "<tr>
-                                  <td>&nbsp;$id</td>
-                                  <td>&nbsp;$destino</td>
-                                  <td>$data_entrada</td>
-                                  <td>&nbsp;$data_saida</td>
-                                  <td>&nbsp;$diarias</td>
-                                  <td>&nbsp;$tipoTransporte</td>
-                                  <td>&nbsp;$hospedagem</td>
-                                  <td>&nbsp;$translado</td>
-                                  <td>&nbsp;$custo</td>
-                                </tr>\n";
-                            }
-                            
-                          ?>
-                        </tbody>
-                      </table>
+                                  echo 
+                                    "<tr>
+                                      <td>&nbsp;$id</td>
+                                      <td>&nbsp;$destino</td>
+                                      <td>$data_entrada</td>
+                                      <td>&nbsp;$data_saida</td>
+                                      <td>&nbsp;$diarias</td>
+                                      <td>&nbsp;$tipoTransporte</td>
+                                      <td>&nbsp;$hospedagem</td>
+                                      <td>&nbsp;$translado</td>
+                                      <td>&nbsp;$custo</td>
+                                    </tr>\n";
+                                }
+                                
+                              ?>
+                            </tbody>
+                        </table>
                     </div>
-              </div>
+                </div>
+            </form>
         </div>
-                </form>
         </dialog>
-
-            <dialog class="mdl-dialog" id="mdl-dialog-meu-sonho" style=" background: rgba(19, 35, 47, 0.9);width: 78% !important;    height: 58% !important;    padding: 0% 0% 0% 0% !important;    margin: -20% 0% 0% 11% !important;">
-                <div class="mdl-dialog__content">
-                   <div class="col-md-12">
-                        <form id="form" class="form-horizontal" method="post" enctype="multipart/form-data" method="POST" action="salvarDestino.php" >
-                            <h1 class="page-header signup">Destino dos meus sonhos</h1>
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    <input id="destino" name="destino" destino="destino" type="text" placeholder="Destino" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <input id="data_entrada" name="data_entrada" type="date" placeholder="Data de Entrada" class="form-control" maxlength="10">
-                                </div>
-                                <div class="col-md-4">
-                                    <input id="data_saida" name="data_saida" type="date" placeholder="Data de Saída" class="form-control" maxlength="10">
-                                </div>
+        <dialog class="mdl-dialog" id="mdl-dialog-meu-sonho" style=" background: rgba(19, 35, 47, 0.9);width: 78% !important;    height: 58% !important;    padding: 0% 0% 0% 0% !important;    margin: -20% 0% 0% 11% !important;">
+            <div class="mdl-dialog__content">
+               <div class="col-md-12">
+                    <form id="form" class="form-horizontal" method="post" enctype="multipart/form-data" method="POST" action="salvarDestino.php" >
+                        <h1 class="page-header" style="text-align: left; color: #ffffff; font-weight: 300; margin: 0 0 40px;">Destino dos meus sonhos</h1>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <input id="destino" name="destino" destino="destino" type="text" placeholder="Destino" class="cadastrar">
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                <label>Translado?</label>
-                                    <select name="tipoTransporte" id="tipoTransporte" class="textBox form-control" data-style="btn-info">
-                                        <option value="">Tipo de Transporte</option>
-                                        <option value="Aviao">Avião</option>
-                                        <option value="Navio">Navio</option>
-                                        <option value="Trem">Trem</option>
-                                        <option value="Espaco Nave">Espaço Nave</option>
-                                        <option value="Moto">Moto</option>
-                                        <option value="Mochilando">Mochilando</option>"; 
-                                    </select>
-                                </div>   
-                                <div class="col-md-4">
-                                    <label>Translado?</label>
-                                    <input type="checkbox" name="translado" />
-                                  <!--  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                                      <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
-                                      <span class="mdl-checkbox__label">Checkbox</span>
-                                    </label>
-
-                                    <script type="text/javascript">
-                                        // $("#checkbox-1").prop('checked',false).change();
-
-                                        $("#checkbox-1").on("change", function() {
-                                          if ($(this).hasClass("is-checked")) {
-                                            return $(this).children().first().attr("checked", true);
-                                          } else {
-                                            return $(this).children().first().removeAttr("checked");
-                                          }
-                                        });
-                                    </script> -->
-                                </div>
-                                <div class="col-md-4">
-                                    <select name="hospedagem" id="hospedagem" class="textBox form-control" data-style="btn-info">
-                                        <option value="">Tipo de Hospedagem</option>
-                                        <option value="1 Estrela">1 Estrela</option>
-                                        <option value="2 Estrelas">2 Estrelas</option>
-                                        <option value="3 Estrelas">3 Estrelas</option>
-                                        <option value="4 Estrelas">4 Estrelas</option>
-                                        <option value="5 Estrelas">5 Estrelas</option>
-                                    </select>
-                                </div>
+                            <div class="col-md-4">
+                                <input id="data_entrada" name="data_entrada" type="date" placeholder="Data de Entrada" class="cadastrar" maxlength="10">
                             </div>
-                            <div class="form-group"> 
-                                <div class="col-md-4">
-                                    <input id="custo" name="custo" type="text" class="form-control" disabled>
-                                </div>
-                                <div class="col-md-4">
-                                    <input id="diaria" name="diaria" type="number" placeholder="Diárias" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
-                                </div>
+                            <div class="col-md-4">
+                                <input id="data_saida" name="data_saida" type="date" placeholder="Data de Saída" class="cadastrar" maxlength="10">
                             </div>
                         </div>
-                    </form>
-                </div>
-            </dialog>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <select name="tipoTransporte" id="tipoTransporte" class="cadastrar" data-style="btn-info" style="background:rgba(19, 35, 47, 0.9);">
+                                    <option value="">Tipo de Transporte</option>
+                                    <option value="Aviao">Avião</option>
+                                    <option value="Navio">Navio</option>
+                                    <option value="Trem">Trem</option>
+                                    <option value="Espaco Nave">Espaço Nave</option>
+                                    <option value="Moto">Moto</option>
+                                    <option value="Mochilando">Mochilando</option>"; 
+                                </select>
+                            </div>   
+                            <div class="col-md-4">
+                                <label>Translado?</label>
+                                <input style="margin: 5% 0% 0% 20% !important;" type="checkbox" name="translado" class="cadastrar" />
+                              <!--  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                  <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                                  <span class="mdl-checkbox__label">Checkbox</span>
+                                </label>
 
+                                <script type="text/javascript">
+                                    // $("#checkbox-1").prop('checked',false).change();
+
+                                    $("#checkbox-1").on("change", function() {
+                                      if ($(this).hasClass("is-checked")) {
+                                        return $(this).children().first().attr("checked", true);
+                                      } else {
+                                        return $(this).children().first().removeAttr("checked");
+                                      }
+                                    });
+                                </script> -->
+                            </div>
+                            <div class="col-md-4">
+                                <select name="hospedagem" id="hospedagem" class="cadastrar" data-style="btn-info" style="background:rgba(19, 35, 47, 0.9);">
+                                    <option value="">Tipo de Hospedagem</option>
+                                    <option value="1 Estrela">1 Estrela</option>
+                                    <option value="2 Estrelas">2 Estrelas</option>
+                                    <option value="3 Estrelas">3 Estrelas</option>
+                                    <option value="4 Estrelas">4 Estrelas</option>
+                                    <option value="5 Estrelas">5 Estrelas</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"> 
+                            <div class="col-md-4">
+                                <input id="custo" name="custo" type="text" placeholder="Custo" class="cadastrar" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="diaria" name="diaria" type="number" placeholder="Diárias" class="cadastrar">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="cadastrar btn-primary mdl-button mdl-js-button mdl-button--raised">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </dialog>
         <hr>
-
         <!-- Footer -->
-        <footer>
+        <footer style="background-color: black; height: 30"%>
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Your Website 2014</p>
@@ -567,7 +565,6 @@
         });
                
     </script>
-
 </body>
 
 </html>

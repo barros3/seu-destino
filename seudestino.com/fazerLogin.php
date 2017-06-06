@@ -20,9 +20,10 @@
         
       if($count == 1) {
          $_SESSION['login'] = $nome;
-         header("location: index.php");
+         return header("location: index.php");
       }else {
          $error = "Your Login Name or Password is invalid";
       }
+      return header("location: login.php");
    }
 ?>

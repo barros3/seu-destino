@@ -20,8 +20,8 @@
 		
 		if (!empty($foto["name"])) {
 
-			$largura = 1500;	// limite largura
-			$altura = 1800;		// limite altura
+			$largura = 480;	// limite largura
+			$altura = 480;		// limite altura
 			$tamanho = 100000;  // limite tamanho
 			$dimensoes = getimagesize($foto["tmp_name"]); // dimensoes da img		
 			$error = array();
@@ -46,7 +46,7 @@
 				preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); // pega extensao
 
 	        	$nome_imagem = md5(uniqid(time())) . "." . $ext[1]; 				// gera nome da img
-	        	$caminho_imagem = "opt/lampp/htdocs/teste-de-mercado/images/" . $nome_imagem;// define o caminho
+	        	$caminho_imagem = "images/" . $nome_imagem;// define o caminho
 
 				move_uploaded_file($foto["tmp_name"], $caminho_imagem); 			// upload da img pro caminho
 
@@ -74,7 +74,7 @@
 
 	}
 
-	return header("Location:cadastraUsuario.php");
+	return header("Location:index.php");
 
 ?>
 
