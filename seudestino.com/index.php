@@ -193,13 +193,12 @@
                         <h3>Siri lanka</h3>
                         <p>Uma parte de nós pensa em férias tranquila nesta praia.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Adicionar</a> 
+                            <button id="show-modal-siri" class="btn btn-primary">Adicionar</button> 
                             <a href="https://srilankafoundation.org/newsfeed/sri-lanka-a-hidden-outsourcing-gem/" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail zoom-ps">
                     <img class="img-card" src="images/brasil1.JPG" alt="">
@@ -207,7 +206,7 @@
                         <h3>Brasil</h3>
                         <p>Descansar depois um bom mergulho no Jalapão - TO</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Adicionar</a> 
+                            <a id="to" href="javascript:void(0);" class="btn btn-primary">Adicionar</a> 
                             <a href="http://ourique-jalapao.com.br/?p=1959" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
@@ -221,7 +220,7 @@
                         <h3>Slovenia</h3>
                         <p>Férias na Slovenia com passeios durante a tarde fria.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Adicionar</a> 
+                            <a id="slovenia" href="javascript:void(0);" class="btn btn-primary">Adicionar</a> 
                             <a href="https://www.slovenia.info/en/places-to-go/regions/alpine-slovenia" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
@@ -235,7 +234,7 @@
                         <h3>Brasil</h3>
                         <p>Em Brasília nem tudo é corrupto.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Adicionar</a>
+                            <a id="brasilia" href="javascript:void(0);" class="btn btn-primary">Adicionar</a>
                             <a href="http://www.inforbrasilia.com.br/2016/06/" class="btn btn-default">Mais Informações</a>
                         </p>
                     </div>
@@ -348,10 +347,10 @@
                         <h1 class="page-header" style="text-align: left; color: #ffffff; font-weight: 300; margin: 0 0 40px;">Destino dos meus sonhos</h1>
                         <div class="form-group">
                             <div class="col-md-4">
-                                <input id="destino" name="destino" destino="destino" type="text" placeholder="Destino" class="cadastrar">
+                                <input id="destino" name="destino" destino="destino" type="text" placeholder="Destino" class="cadastrar" required>
                             </div>
                             <div class="col-md-4">
-                                <input id="data_entrada" name="data_entrada" type="date" placeholder="Data de Entrada" class="cadastrar" maxlength="10">
+                                <input id="data_entrada" name="data_entrada" type="date" placeholder="Data de Entrada" class="cadastrar" maxlength="10" required>
                             </div>
                             <div class="col-md-4">
                                 <input id="data_saida" name="data_saida" type="date" placeholder="Data de Saída" class="cadastrar" maxlength="10">
@@ -359,7 +358,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-4">
-                                <select name="tipoTransporte" id="tipoTransporte" class="cadastrar" data-style="btn-info" style="background:rgba(19, 35, 47, 0.9);">
+                                <select name="tipoTransporte" id="tipoTransporte" class="cadastrar" data-style="btn-info" style="background:rgba(19, 35, 47, 0.9);" required>
                                     <option value="">Tipo de Transporte</option>
                                     <option value="Aviao">Avião</option>
                                     <option value="Navio">Navio</option>
@@ -371,7 +370,7 @@
                             </div>   
                             <div class="col-md-4">
                                 <label>Translado?</label>
-                                <input style="margin: 5% 0% 0% 20% !important;" type="checkbox" name="translado" class="cadastrar" />
+                                <input style="margin: 5% 0% 0% 20% !important;" type="checkbox" name="translado" class="cadastrar" required/>
                               <!--  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                                   <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
                                   <span class="mdl-checkbox__label">Checkbox</span>
@@ -390,7 +389,7 @@
                                 </script> -->
                             </div>
                             <div class="col-md-4">
-                                <select name="hospedagem" id="hospedagem" class="cadastrar" data-style="btn-info" style="background:rgba(19, 35, 47, 0.9);">
+                                <select name="hospedagem" id="hospedagem" class="cadastrar" data-style="btn-info" style="background:rgba(19, 35, 47, 0.9);" required>
                                     <option value="">Tipo de Hospedagem</option>
                                     <option value="1 Estrela">1 Estrela</option>
                                     <option value="2 Estrelas">2 Estrelas</option>
@@ -458,6 +457,30 @@
         proximo.addEventListener('click', showClickHandler);
         closeButton.addEventListener('click', closeClickHandler);
 
+    }());
+    </script>
+     <script type="text/javascript">
+      (function() {
+        'use strict';
+        var dialog = document.querySelector('#mdl-dialog-meu-sonho');
+        var closeButton = dialog.querySelector('button');
+        var showButton = document.querySelector('#show-modal-siri');
+
+        if(!dialog){
+            $('#destino').val('SIRI LANK - PRAIA');
+        }
+
+        if (! dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        var closeClickHandler = function(event) {
+            dialog.close();
+        };
+        var showClickHandler = function(event) {
+            dialog.showModal();
+        };
+        showButton.addEventListener('click', showClickHandler);
+        closeButton.addEventListener('click', closeClickHandler);
     }());
     </script>
     <script type="text/javascript">
