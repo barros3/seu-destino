@@ -31,7 +31,7 @@
 </head>
 
 
-    <body class"well well-sm">
+    <body class="well well-sm">
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -71,7 +71,7 @@
             </div>
             <!-- /.container -->
         </nav>
-        <body>
+        <!-- <body>? -->
             <div class="container">
                     <div class="col-md-12">
                         <form id="form" class="form-horizontal" method="post" enctype="multipart/form-data" method="POST" action="salvarDestino.php" >

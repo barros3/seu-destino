@@ -46,7 +46,7 @@
 				preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); // pega extensao
 
 	        	$nome_imagem = md5(uniqid(time())) . "." . $ext[1]; 				// gera nome da img
-	        	$caminho_imagem = "images/" . $nome_imagem;// define o caminho
+	        	$caminho_imagem = "material/images/" . $nome_imagem;// define o caminho
 
 				move_uploaded_file($foto["tmp_name"], $caminho_imagem); 			// upload da img pro caminho
 

@@ -5,18 +5,18 @@
       
        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-       <link rel="stylesheet" href="sign-up-login-form/css/style.css">
-       <link rel="stylesheet" href="sweetalert2.min.css">
-       <link rel="stylesheet" href="stylesweetalert2.css">
+       <link rel="stylesheet" href="material/sign-up-login-form/css/style.css">
+       <link rel="stylesheet" href="material/sweetalert2.min.css">
+       <link rel="stylesheet" href="material/stylesweetalert2.css">
 
-       <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+       <script src="material/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
        <!-- <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css"> -->
 
        <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
       
    </head>
-   <body>
+   <body class="bud">
         <div class="form">
           
           <ul class="tab-group">
@@ -153,7 +153,7 @@
     </div> <!-- /form -->
        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-        <script src="sign-up-login-form/js/index.js"></script>
+        <script src="material/sign-up-login-form/js/index.js"></script>
         <script type="text/javascript">
         // Quando enviado o formulário
           $('#formulario').on('submit', function () {
