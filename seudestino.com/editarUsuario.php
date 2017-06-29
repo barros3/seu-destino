@@ -1,28 +1,30 @@
 <?php
-
+	
 	include 'connection.php';
+	include 'session.php';
+	
+	
+	$id = isset($_POST["id"]) ? $_POST["id"] : '';
 
 	$foto = isset($_FILES["foto"]) ? $_FILES["foto"] : '';
 
-	$nome = isset($_POST["nome"]) ? $_POST["nome"] : '';
-	$sobrenome = isset($_POST["sobrenome"]) ? $_POST["sobrenome"] : '';
-	$data_nascimento = isset($_POST["data_nascimento"]) ? $_POST["data_nascimento"] : '';
-	
+	$nome = isset($_POST['nome']) ? $_POST['nome'] : '';
+	$sobrenome = isset($_POST['sobrenome']) ? $_POST['sobrenome'] : '';
+	$data_nascimento = isset($_POST['data_nascimento']) ? $_POST['data_nascimento'] : '';
+
 	$endereco = isset($_POST["endereco"]) ? $_POST["endereco"] : '';
-	$telefone = isset($_POST["telefone"]) ? $_POST["telefone"] : '';
+	$telefone = isset($_POSTT["telefone"]) ? $_POST["telefone"] : '';
 	$rg = isset($_POST["rg"]) ? $_POST["rg"] : '';
 	
 	$cpf = isset($_POST["cpf"]) ? $_POST["cpf"] : '';
 	$login = isset($_POST["login"]) ? $_POST["login"] : '';
 	$senha = isset($_POST["senha"]) ? $_POST["senha"] : '';
-	
-	try{
-		
-		if (!empty($foto["name"])) {
 
+	try{
+		if (!empty($foto["name"])) {
 			$largura = 4800;	// limite largura
 			$altura = 4800;		// limite altura
-			$tamanho = 100000000;  // limite tamanho
+			$tamanho = 10000000;  // limite tamanho
 			$dimensoes = getimagesize($foto["tmp_name"]); // dimensoes da img		
 			$error = array();
 
@@ -40,7 +42,6 @@
 	   		 	$error[4] = "A imagem deve ter no máximo ".$tamanho." bytes";
 			}
 
-		
 			if (count($error) == 0) {	// verifica erro
 		
 				preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); // pega extensao
@@ -49,31 +50,36 @@
 	        	$caminho_imagem = "material/images/" . $nome_imagem;// define o caminho
 
 				move_uploaded_file($foto["tmp_name"], $caminho_imagem); 			// upload da img pro caminho
+				
 
-				$query = "INSERT INTO `usuario` (`foto`, `nome`, `sobrenome`, `data_nascimento`, `endereco`, `telefone`, `rg`, `cpf`, `login`, `senha`) VALUES ('".$caminho_imagem."', '".$nome."', '".$sobrenome."', '".$data_nascimento."', '".$endereco."', '".$telefone."', '".$rg."', '".$cpf."', '".$login."', '".$senha."')";
-
-				// $query inseri no banco
-
-				$sql = mysqli_query($conexao, $query) or die("insert falhou!!!!");
+				$sqlEditUsuario = "UPDATE `usuario` set `foto` = '".$caminho_imagem."', `nome` = '".$nome."',
+									 `sobrenome` = '".$sobrenome."', `data_nascimento` = '".$data_nascimento."',
+									 `endereco` = '".$endereco."', `telefone` = '".$telefone."', `rg` = '".$rg."',
+									 `cpf` = '".$cpf."', `login` = '".$login."', `senha` = '".$senha."' 
+									 WHERE `id` = '".$id."'
+				";
+				
+				$sql = mysqli_query($conexao, $sqlEditUsuario) or die("insert falhou!!!!");
 
 				if($conexao){
 					mysqli_close($conexao);
 				}
 				
-
 				if (count($error) != 0) {
 					foreach ($error as $erro) {
 						echo $erro . "<br />";
 					}
 				}
 			}
+		}else{
+			// return header("Location:index.php");			
 		}
+
 	}catch(Exception $e){
+
 	    echo $e->getMessage();
+
 	}
 
-	return header("Location:index.php");
-
+	// return header("Location:index.php");
 ?>
-
-

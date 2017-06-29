@@ -7,7 +7,7 @@ html {
 }
 
 .bud {
-  background-image: url('../../images/viagem.jpg'); 
+  /*background-image: url('../../images/viagem.jpg'); */
   background-repeat: no-repeat;
   max-width:100%;
   height:100%;
@@ -17,6 +17,14 @@ html {
   background-size: 100% 100% !important;
  /* background-origin: content-box;;
     background-position: center center;*/
+     
+     /*background-image: url('../../images/viagem.jpg'); 
+  background-position: center center;
+    /* background-size: cover; */
+    /*height: 100vh;
+    margin-bottom: 2.5rem;*/
+ /* background-origin: content-box;;
+    background-position: center center;*/*/
 }
 
 a {
@@ -201,7 +209,7 @@ transform: scale(1.1);
 }
 
 .cadastrar {
-  font-size: 22px;
+  font-size: 22px !important;
   display: block;
   width: 100%;
   /*height: 100%;*/
@@ -224,4 +232,17 @@ transform: scale(1.1);
     height: 167px !important;
     width: auto !important;
     height: auto !important;
+}
+
+
+.yupiee {
+-webkit-transition: all 1500ms cubic-bezier(0.010, 0.000, 0.010, 0.655); 
+ -moz-transition: all 1500ms cubic-bezier(0.010, 0.000, 0.010, 0.655); 
+   -o-transition: all 1500ms cubic-bezier(0.010, 0.000, 0.010, 0.655); 
+      transition: all 1500ms cubic-bezier(0.010, 0.000, 0.010, 0.655); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(0.010, 0.000, 0.010, 0.655); 
+   -moz-transition-timing-function: cubic-bezier(0.010, 0.000, 0.010, 0.655); 
+     -o-transition-timing-function: cubic-bezier(0.010, 0.000, 0.010, 0.655); 
+        transition-timing-function: cubic-bezier(0.010, 0.000, 0.010, 0.655); /* custom */
 }

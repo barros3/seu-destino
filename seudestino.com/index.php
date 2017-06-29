@@ -8,10 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- <meta name="description" content=""> -->
+    <!-- <meta name="author" content=""> -->
     <link rel="stylesheet" href="material/sign-up-login-form/css/style.css">
     <link rel="stylesheet" href="material/sign-up-login-form/scss/style.css">
+    <!-- <script src="material/bower_components/sweetalert2/dist/sweetalert2.min.js"></script> -->
 
     <link rel="stylesheet" href="mdl/material.css">
     <script src="material/mdl/material.js"></script>
@@ -27,6 +28,12 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+
     <link rel="stylesheet" href="material/mdl/material.min.css">
     <script src="material/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -41,62 +48,26 @@
     <!-- Custom CSS -->
     <link href="material/css/heroic-features.css" rel="stylesheet">
 
+    <script type="text/javascript" src="node_modules/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="node_modules/epepite-datepicker/dist/material-datepicker.min.js"></script>  
+
     <?php
       include 'session.php';
     ?>
 
     <?php
-      include 'connection.php';
-      // Informações da query
-      $campos_query = "*";
-      $final_query  = "FROM destino";
-
-      // Maximo de registros por pagina
-      $maximo = 6;
-
-      // Declaração da pagina inicial
-      $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] :1;
-      // if($pagina == "") {
-      //     $pagina = "1";
-      // }
-
-      // Calculando o registro inicial
-      $inicio = $pagina - 1;
-      $inicio = $maximo * $inicio;
-
-      // Conta os resultados no total da query
-      $strCount = "SELECT COUNT(*) AS 'num_resgistro' $final_query";
-      $query = mysqli_query($conexao, $strCount);
-      $row = mysqli_fetch_array($query);
-      $total = $row["num_resgistro"];
-
-      ###################################################################################
-      // INICIO DO CONTEÚDO
-
-      // Realizamos a query
-      $sql = mysqli_query($conexao, "SELECT $campos_query $final_query LIMIT ".$inicio.", ".$maximo."");
-
-      // var_dump($listarDestino);
-      // FIM DO CONTEUDO
-      ###################################################################################
-
-      $totalCusto = "SELECT SUM(custo) AS valor_soma $final_query";
-      $resultTotal = mysqli_query($conexao, $totalCusto);
-      $row = mysqli_fetch_array($resultTotal); 
-      $sum = $row['valor_soma'];
-      // var_dump($sum);
-
+      include 'paginacao.php';
     ?>
 
   </head>
 
 <body>
-  <div class="bud">
+  <div class="">
     <!-- Page Content -->
-    <div class="container">
-
+    <div class="container bud">
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 1; width: 30%;
+    margin: 0 auto; position: relative;">
           <div class="">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -140,40 +111,52 @@
         </nav>
 
         <!-- Jumbotron Header -->
-        <header>
-          <div class="row">
-            <div class="col-sm-6 row" style="margin-top: 5%;">
-            <?php 
-                echo "
-                    <div class='row col-sm-12'>
-                      <div class='col-sm-6'>
-                        <img style='width: 200px; height: 200px; border-radius: 100%' src='".$foto."' alt='Foto do Perfil' /><br /> 
-                      </div>
-                      <div class='col-sm-6'>
-                        <h3>Bem vindo, ".$login_session."</h3> 
-
-                        <p><strong>Sobrenome :</strong> ".$sobrenome." </p>
-                        <p><strong>Nascimento :</strong> ".$data_nascimento." </p>
-                        <p><strong>Endereco :</strong> ".$endereco." </p>
-                        <p><strong>Telefone :</strong> ".$telefone." </p>
-                        <p><strong>RG :</strong> ".$rg." </p>
-                        <p><strong>CPF :</strong> ".$cpf." </p>
-                        <p><strong>Login :</strong> ".$login." </p>
-                        <p><strong>Senha Atual :</strong> ".$senha." </p>
-                      </div>  
-                    </div>
-            ";
-            ?>
-            </div>          
-            <div class="col-sm-6 row" style="margin-top: 5%;">
-                <h3 style="float: bottom;">  Minhas opções</h3>
-                <p>
-                  <a id="show-modal-meus-destino" style="max-width: 50%;" type="button" class="button button-block btn">Meus destinos</a>
-                </p>
-                <p>
-                 <a id="show-modal-destino-sonho" style="max-width: 50%"; type="button" class="button button-block btn">Destino dos sonhos</a>
-                </p>
+        <header style="z-index: 2;">
+          <div class="row col-sm-12" style="margin: 5% 0% 0% 0%">
+            <div class='col-sm-6 mdl-shadow--6dp'>
+                <?php echo "
+              <div class='col-sm-5'>
+                    <img style='width: 50%; border-radius: 100%; margin: 11% 0% 0% 0%;' src='".$foto."' alt='Foto do Perfil' /><br /> 
+<h4 style='margin: 0% 0% 0% 30%;='center'>Bem vindo, ".$login_session."</h4>
+              </div>"
+                ;  ?>
+                <div class="col-sm-7 mdl-shadow--6dp" style="margin: 5% 0% 10% 0%;">
+                    <h3 style="float: bottom;">  Minhas opções</h3>
+                    <p>
+                      <a id="show-modal-meus-destino" style="max-width: 100%;" type="button" class="button button-block btn">Meus destinos</a>
+                    </p>
+                    <p>
+                     <a id="show-modal-destino-sonho" style="max-width: 100%"; type="button" class="button button-block btn">Destino dos sonhos</a>
+                    </p>
+                    <p>
+                      <a id="show-modal-meu-perfil" style="max-width: 100%;" type="button" class="button button-block btn">Meu Perfil</a>
+                    </p>
+                    <p>
+                     <a id="show-modal-mapa-" style="max-width: 100%"; type="button" class="button button-block btn">Mapa</a>
+                    </p>
+                </div>
             </div>
+            <div class="col-sm-6" >
+              <div class="col-sm-12">
+                <div class="input-field col-sm-8">
+                  <input id="seu-destino" type="text" class="validate">
+                  <label for="seu-destino"  style="font-size: 16px !important">Qual seu destino?</label>
+                </div>
+                <div class="input-field col-sm-4">
+                  <a style="background-color: orange;" type="button" class="button button-block btn">Pesquisar</a>
+                </div> 
+              </div>
+              <div class="row col-sm-12">
+                <div class="col-sm-6">
+                  <label for="data_entrada" class="validate" style="font-size: 16px !important; margin: 12% 0% 0% 0%;">Data par ir</label>
+                  <input id="data_entrada" name="data_entrada" type="date" style="font-size: 16px !important;" maxlength="8" required>
+                </div>
+                <div class="col-sm-6">
+                  <label for="last_name" style="font-size: 16px !important; margin: 12% 0% 0% 0%;">Data para voltar</label>
+                  <input id="data_entrada" name="data_entrada" style="font-size: 16px !important;"  type="date" maxlength="8" required>
+                </div>
+              </div>
+             </div> 
           </div> 
         </header>
 
@@ -251,8 +234,7 @@
 
         <!-- -dialogs -->
 
-        <dialog class="mdl-dialog" id="mdl-dialog-meus-destinos" style="background: rgba(19, 35, 47, 0.9);
-        width: 78% !important; height: 58% !important; padding: 0% 5% 0% 5% !important; width: 85% !important; height: 85% !important;">
+        <dialog class="mdl-dialog" id="mdl-dialog-meus-destinos" style="background: rgba(19, 35, 47, 0.9); padding: 0% 5% 0% 5% !important; width: 85% !important; height: 90% !important;">
             <form id="form" method="post" enctype="multipart/form-data" method="POST" action="salvarUsuario.php">
             <div class="page-header">
               <h1 style="text-align: left; color: #ffffff; font-weight: 300;">Meus Destinos</h1>  
@@ -291,7 +273,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-12" style="margin: 5% 0% 0% 0%;">
+              <div class="col-md-12">
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--6dp" style="width: 100% !important;">
                   <thead class="">
                     <tr class="table-info" style="font-style: oblique; font-size: large;">
@@ -341,8 +323,8 @@
         <dialog class="mdl-dialog" id="mdl-dialog-meu-sonho" style=" background: rgba(19, 35, 47, 0.9);width: 78% !important;    height: 58% !important;    padding: 0% 0% 0% 0% !important;    margin: -20% 0% 0% 11% !important;">
           
           <div class="col-md-12">
-            <form id="form" class="form-horizontal" method="post" enctype="multipart/form-data" method="POST" action="salvarDestino.php" >
-              <h1 class="page-header" style="text-align: left; color: #ffffff; font-weight: 300; margin: 0 0 40px;">Destino dos meus sonhos</h1>
+            <form id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="salvarDestino.php" >
+              <h1 class="page-header" style="text-align: left; color: #ffffff; font-weight: 300;">Destino dos meus sonhos</h1>
               <div class="form-group">
                 <div class="col-md-4">
                   <input id="destino" name="destino" destino="destino" type="text" placeholder="Destino" class="cadastrar" required>
@@ -368,7 +350,7 @@
                 </div>   
                 <div class="col-md-4">
                   <label>Translado?</label>
-                  <input style="margin: 5% 0% 0% 20% !important;" type="checkbox" name="translado" class="cadastrar" required/>
+                  <input id="translado" type="checkbox" name="translado" class="cadastrar" required/>
                 <!--  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                 <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
                 <span class="mdl-checkbox__label">Checkbox</span>
@@ -411,12 +393,58 @@
             </form>
           </div>
         </dialog>
+        <dialog class="mdl-dialog" id="mdl-dialog-meu-perfil" style="background: rgba(19, 35, 47, 0.9);width: 78% !important; padding: 0% 0% 0% 0% !important; margin: -20% 0% 0% 11% !important;">
+          
+          <div class="col-md-12">
+            <form id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="editarUsuario.php" >
+              <h1 class="page-header" style="text-align: left; color: #ffffff; font-weight: 300;">Meu perfil</h1>
+              <div class="form-group">
+             <?php
+            
+              $arrayUsuario = json_decode($arrayUsuario);
+
+                foreach ($arrayUsuario as $key => $value) {
+                      if($key == 'id'){
+                        echo "<input id='$key' name='$key' type='hidden' value='$value'>";
+                      }else if($key == 'foto'){
+                      echo 
+                          "
+                          <div class='col-md-4'>
+                            <img name='$key' style='width: 30%; border-radius: 100%; margin: 0% 0% 0% 30%;' type='file' src='$value'>
+                            <input style='border-radius: 26%; width: 41%; list-style-type: circle; margin: -7% 0% 0% 25%;' id='$key' name='$key' type='file' value='$value'>
+                          </div>"; 
+                      }else if($key == 'data_nascimento'){
+                      echo 
+                            "
+                            <div class='col-md-4'>
+                                  <input id='$key' name='$key' placeholder='$key' type='date' style='font-size: 16px !important;' maxlength='8' class='cadastrar' value='$value'>
+                            </div>"; 
+                      }
+                      else{
+                        echo 
+                            "
+                            <div class='col-md-4'>
+                              <input id='$key' name='$key' style='text-transform: uppercase;' type='text' placeholder='$key' class='cadastrar' value='$value'>
+                            </div>"; 
+                      }
+
+                  }
+                    echo 
+                      "<div class='col-md-4'>
+                        <button type='submit' style='text-align: center' class='cadastrar btn-primary mdl-button mdl-js-button mdl-button--raised'>Concluir</button>
+                      </div>"; 
+
+              ?> 
+              </div>
+            </form>
+          </div>
+        </dialog>
         <hr>
         <!-- Footer -->
         <footer style="background-color: black; height: 30"%>
           <div class="row">
             <div class="col-lg-12">
-              <p>Copyright &copy; Your Website 2014</p>
+              <p>Copyright &copy; Luciano Barros</p>
             </div>
           </div>
         </footer>
@@ -431,92 +459,118 @@
     <script src="material/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+    (function() {'use strict';
+
+        var anterior = document.querySelector('#ant');
+        var proximo = dialog.querySelector('#prox');
+
+        var dialog = document.querySelector('#mdl-dialog-meus-destinos');
+
+        var showButton = document.querySelector('#show-modal-meus-destino');
+
+        if (!dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        var closeClickHandler = function(event) {
+          dialog.close();
+        };
+        var showClickHandler = function(event) {
+          dialog.showModal();
+        };
+        
+        showButton.addEventListener('click', showClickHandler);
+        anterior.addEventListener('click', showClickHandler);
+        proximo.addEventListener('click', showClickHandler);
+        closeButton.addEventListener('click', closeClickHandler);
+
+      }());
+    </script>
+    <script type="text/javascript">
     (function() {
-    'use strict';
+      'use strict';
+      
+      var dialog = document.querySelector('#mdl-dialog-meu-sonho');
+      var closeButton = dialog.querySelector('button');
+      var showButton = document.querySelector('#show-modal-siri');
 
-    var anterior = document.querySelector('#ant');
-    var proximo = dialog.querySelector('#prox');
+      if(!dialog){
+        $('#destino').val('SIRI LANK - PRAIA');
+      }
 
-    var dialog = document.querySelector('#mdl-dialog-meus-destinos');
-
-    // var showButton = document.querySelector('#show-modal-meus-destino');
-
-    if (! dialog.showModal) {
-    dialogPolyfill.registerDialog(dialog);
-    }
-    var closeClickHandler = function(event) {
-    dialog.close();
-    };
-    var showClickHandler = function(event) {
-    dialog.showModal();
-    };
-    anterior.addEventListener('click', showClickHandler);
-    proximo.addEventListener('click', showClickHandler);
-    closeButton.addEventListener('click', closeClickHandler);
-
-    }());
+      if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+      }
+      var closeClickHandler = function(event) {
+        dialog.close();
+      };
+      var showClickHandler = function(event) {
+        dialog.showModal();
+      };
+        showButton.addEventListener('click', showClickHandler);
+        closeButton.addEventListener('click', closeClickHandler);
+      }());
+    </script>
+    <script type="text/javascript">
+      (function() {
+      'use strict';
+      
+      var dialog = document.querySelector('#mdl-dialog-meus-destinos');
+      var closeButton = dialog.querySelector('button');
+      var showButton = document.querySelector('#show-modal-meus-destino');
+      
+      if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+      }
+      var closeClickHandler = function(event) {
+        dialog.close();
+      };
+      var showClickHandler = function(event) {
+        dialog.showModal();
+      };
+        showButton.addEventListener('click', showClickHandler);
+        closeButton.addEventListener('click', closeClickHandler);
+      }());
     </script>
     <script type="text/javascript">
     (function() {
     'use strict';
-    var dialog = document.querySelector('#mdl-dialog-meu-sonho');
-    var closeButton = dialog.querySelector('button');
-    var showButton = document.querySelector('#show-modal-siri');
-
-    if(!dialog){
-    $('#destino').val('SIRI LANK - PRAIA');
-    }
-
-    if (! dialog.showModal) {
-    dialogPolyfill.registerDialog(dialog);
-    }
-    var closeClickHandler = function(event) {
-    dialog.close();
-    };
-    var showClickHandler = function(event) {
-    dialog.showModal();
-    };
-    showButton.addEventListener('click', showClickHandler);
-    closeButton.addEventListener('click', closeClickHandler);
-    }());
-    </script>
-    <script type="text/javascript">
-    (function() {
-    'use strict';
-    var dialog = document.querySelector('#mdl-dialog-meus-destinos');
-    var closeButton = dialog.querySelector('button');
-    var showButton = document.querySelector('#show-modal-meus-destino');
-    if (! dialog.showModal) {
-    dialogPolyfill.registerDialog(dialog);
-    }
-    var closeClickHandler = function(event) {
-    dialog.close();
-    };
-    var showClickHandler = function(event) {
-    dialog.showModal();
-    };
-    showButton.addEventListener('click', showClickHandler);
-    closeButton.addEventListener('click', closeClickHandler);
-    }());
-    </script>
-    <script type="text/javascript">
-    (function() {
-    'use strict';
+    
     var dialog = document.querySelector('#mdl-dialog-meu-sonho');
     var closeButton = dialog.querySelector('button');
     var showButton = document.querySelector('#show-modal-destino-sonho');
+    
     if (! dialog.showModal) {
-    dialogPolyfill.registerDialog(dialog);
+      dialogPolyfill.registerDialog(dialog);
     }
     var closeClickHandler = function(event) {
-    dialog.close();
+      dialog.close();
     };
     var showClickHandler = function(event) {
-    dialog.showModal();
+      dialog.showModal();
     };
-    showButton.addEventListener('click', showClickHandler);
-    closeButton.addEventListener('click', closeClickHandler);
+      showButton.addEventListener('click', showClickHandler);
+      closeButton.addEventListener('click', closeClickHandler);
     }());
+
+    </script>
+    <script type="text/javascript">
+      (function() {
+      'use strict';
+        var dialog = document.querySelector('#mdl-dialog-meu-perfil');
+        var closeButton = dialog.querySelector('button');
+        var showButton = document.querySelector('#show-modal-meu-perfil');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        var closeClickHandler = function(event) {
+          dialog.close();
+        };
+        var showClickHandler = function(event) {
+          dialog.showModal();
+        };
+          showButton.addEventListener('click', showClickHandler);
+          closeButton.addEventListener('click', closeClickHandler);
+        }());
     </script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
@@ -524,63 +578,63 @@
     <script type="text/javascript">
     $(document).ready(function(){
 
-    $(document).change(function(){
+      $(document).change(function(){
 
-    var _tipoTransporte = $("#tipoTransporte").val();
-    var _translado = $(document).find("input[name='translado']:checked").length > 0;
-    var _hospedagem = $("#hospedagem").val();
-    var _diaria = $("#diaria").val();
+      var _tipoTransporte = $("#tipoTransporte").val();
+      var _translado = $(document).find("input[name='translado']:checked").length > 0;
+      var _hospedagem = $("#hospedagem").val();
+      var _diaria = $("#diaria").val();
 
-    var tarifaTransporte;
-    var tarifaHospedagem;
-    var tarifaTranslado;
+      var tarifaTransporte;
+      var tarifaHospedagem;
+      var tarifaTranslado;
 
-    var total;
+      var total;
 
-    if(_tipoTransporte === ""){
-    tarifaTransporte = 0;
-    }else if(_tipoTransporte === "Aviao"){
-    tarifaTransporte = 1250;
-    }else if(_tipoTransporte === "Trem"){
-    tarifaTransporte = 50;
-    }else if(_tipoTransporte === "Navio"){
-    tarifaTransporte = 3500;
-    }else if(_tipoTransporte === "Espaco Nave"){
-    tarifaTransporte = 10;
-    }else if(_tipoTransporte === "Moto"){
-    tarifaTransporte = 100;
-    }else if(_tipoTransporte === "Mochilando"){
-    tarifaTransporte = 0;
-    }
+      if(_tipoTransporte === ""){
+        tarifaTransporte = 0;
+      }else if(_tipoTransporte === "Aviao"){
+      totalarifaTransporte = 1250;
+      }else if(_tipoTransporte === "Trem"){
+        tarifaTransporte = 50;
+      }else if(_tipoTransporte === "Navio"){
+        tarifaTransporte = 3500;
+      }else if(_tipoTransporte === "Espaco Nave"){
+        tarifaTransporte = 10;
+      }else if(_tipoTransporte === "Moto"){
+        tarifaTransporte = 100;
+      }else if(_tipoTransporte === "Mochilando"){
+        tarifaTransporte = 0;
+      }
 
 
-    if(_hospedagem === "" || _hospedagem === null){
-    tarifaHospedagem = 0;
-    }else if(_hospedagem === "1 Estrela"){
-    tarifaHospedagem = 50 * _diaria;
-    }else if(_hospedagem === "2 Estrelas"){
-    tarifaHospedagem = 100 * _diaria;
-    }else if(_hospedagem === "3 Estrelas"){
-    tarifaHospedagem = 150 * _diaria;
-    }else if(_hospedagem === "4 Estrelas"){
-    tarifaHospedagem = 200 * _diaria;
-    }else if(_hospedagem === "5 Estrelas"){
-    tarifaHospedagem = 250 * _diaria;
-    }
+      if(_hospedagem === "" || _hospedagem === null){
+        tarifaHospedagem = 0;
+      }else if(_hospedagem === "1 Estrela"){
+        tarifaHospedagem = 50 * _diaria;
+      }else if(_hospedagem === "2 Estrelas"){
+        tarifaHospedagem = 100 * _diaria;
+      }else if(_hospedagem === "3 Estrelas"){
+        tarifaHospedagem = 150 * _diaria;
+      }else if(_hospedagem === "4 Estrelas"){
+        tarifaHospedagem = 200 * _diaria;
+      }else if(_hospedagem === "5 Estrelas"){
+        tarifaHospedagem = 250 * _diaria;
+      }
 
-    console.log(tarifaHospedagem);
+      console.log(tarifaHospedagem);
 
-    if(_translado === true){
-    tarifaTranslado = 50;
-    }else{
-    tarifaTranslado = 0;
-    }
+      if(_translado === true){
+        tarifaTranslado = 50;
+      }else{
+        tarifaTranslado = 0;
+      }
 
-    total = tarifaTransporte + tarifaHospedagem + tarifaTranslado;
+      total = tarifaTransporte + tarifaHospedagem + tarifaTranslado;
 
-    $("#custo").val(total);
+      $("#custo").val(total);
 
-    });
+      });
 
     });
 
