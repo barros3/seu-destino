@@ -116,7 +116,7 @@
             <div class='col-sm-6 mdl-shadow--6dp'>
                 <?php echo "
               <div class='col-sm-5'>
-                    <img style='width: 50%; border-radius: 100%; margin: 11% 0% 0% 0%;' src='".$foto."' alt='Foto do Perfil' /><br /> 
+                    <img style='width: 50%; border-radius: 100%; margin: 11% 0% 0% 0%;' src='".$fotoPerfil."' alt='Foto do Perfil' /><br /> 
 <h4 style='margin: 0% 0% 0% 30%;='center'>Bem vindo, ".$login_session."</h4>
               </div>"
                 ;  ?>
@@ -410,8 +410,8 @@
                       echo 
                           "
                           <div class='col-md-4'>
-                            <img name='$key' style='width: 30%; border-radius: 100%; margin: 0% 0% 0% 30%;' type='file' src='$value'>
-                            <input style='border-radius: 26%; width: 41%; list-style-type: circle; margin: -7% 0% 0% 25%;' id='$key' name='$key' type='file' value='$value'>
+                            <img style='width: 30%; border-radius: 100%; margin: 0% 0% 0% 30%;' type='file' src='$value'>
+                            <input style='border-radius: 26%; width: 41%; list-style-type: circle; margin: -7% 0% 0% 25%;' id='$key' name='$key' type='file' value='$value' src='$value'>
                           </div>"; 
                       }else if($key == 'data_nascimento'){
                       echo 

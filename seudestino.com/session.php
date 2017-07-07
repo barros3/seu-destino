@@ -10,7 +10,7 @@
    $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
    
    $id = $row['id'];
-   $foto = $row['foto'];
+   $fotoPerfil = $row['foto'];
    $login_session = $row['nome'];
    // $sobrenome = $row['sobrenome'];
    // $data_nascimento = $row['data_nascimento'];
