@@ -66,9 +66,7 @@
     <!-- Page Content -->
     <div class="container bud">
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 1; width: 30%;
-    margin: 0 auto; position: relative;">
-          <div class="">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 1; margin: 0 auto; position: relative;">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -106,7 +104,6 @@
               </ul>
             </div>
             <!-- /.navbar-collapse -->
-          </div>
           <!-- /.container -->
         </nav>
 
