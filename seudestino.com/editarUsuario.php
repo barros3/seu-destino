@@ -13,7 +13,7 @@
 	$data_nascimento = isset($_POST['data_nascimento']) ? $_POST['data_nascimento'] : '';
 
 	$endereco = isset($_POST["endereco"]) ? $_POST["endereco"] : '';
-	$telefone = isset($_POSTT["telefone"]) ? $_POST["telefone"] : '';
+	$telefone = isset($_POST["telefone"]) ? $_POST["telefone"] : '';
 	$rg = isset($_POST["rg"]) ? $_POST["rg"] : '';
 	
 	$cpf = isset($_POST["cpf"]) ? $_POST["cpf"] : '';
@@ -21,16 +21,16 @@
 	$senha = isset($_POST["senha"]) ? $_POST["senha"] : '';
 
 	try{
-
+			
 			$qwe = "SELECT * FROM `usuario` WHERE `id` = '$id'";
 			$sqlSrc = mysqli_query($conexao, $qwe) or die("merreu!");
 
 			if (empty($foto["name"])) {
+				
 				$r = mysqli_fetch_array($sqlSrc);
 				$caminho_imagem = $r['foto'];
-				var_dump("passou if");
 			}else{
-				var_dump("passou else");
+				
 				$largura = 4800;	// limite largura
 				$altura = 4800;		// limite altura
 				$tamanho = 10000000;  // limite tamanho
@@ -75,13 +75,13 @@
 				";
 				
 				$sql = mysqli_query($conexao, $sqlEditUsuario) or die("insert falhou!!!!");
-				var_dump($sql);
+				var_dump($telefone);
 
 				if($conexao){
 					mysqli_close($conexao);
 				}
 				
-			return header("Location:index.php");			
+			// return header("Location:index.php");			
 		
 
 	}catch(Exception $e){
@@ -90,5 +90,5 @@
 
 	}
 
-	return header("Location:index.php");
+	// return header("Location:index.php");
 ?>
