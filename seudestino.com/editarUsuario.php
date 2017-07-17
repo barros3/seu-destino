@@ -81,7 +81,7 @@
 					mysqli_close($conexao);
 				}
 				
-			// return header("Location:index.php");			
+			return header("Location:index.php");			
 		
 
 	}catch(Exception $e){
@@ -90,5 +90,5 @@
 
 	}
 
-	// return header("Location:index.php");
+	return header("Location:index.php");
 ?>
